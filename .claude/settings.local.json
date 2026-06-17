@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cd \"C:\\\\Users\\\\My HP\\\\OneDrive\\\\Documenten\\\\26 commerce\\\\Guidooo\\\\guidooo\"; Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"npm run dev\" -PassThru | Select-Object Id)",
+      "PowerShell(Start-Sleep -Seconds 6; try { $r = Invoke-WebRequest -Uri \"http://localhost:3000/tours/test\" -UseBasicParsing -TimeoutSec 5; $r.StatusCode } catch { $_.Exception.Message })",
+      "PowerShell(Stop-Process *)"
+    ]
+  }
+}
