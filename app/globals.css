@@ -1,8 +1,36 @@
+/* Guidooo Brand Theme
+ * Dit is de enige bron van waarheid voor merkkleuren en design tokens.
+ * Nieuwe pagina's (inclusief de landingspagina vanuit v0.dev) hergebruiken
+ * deze tokens via semantische Tailwind classes: bg-background, text-primary,
+ * bg-accent-1, bg-accent-2, rounded-pill, animate-pulse-pin.
+ * Definieer GEEN losse hex-waarden in componenten — voeg hier een token toe.
+ */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* Pulse-pin keyframe — enige bewegende element in de UI.
+ * Altijd aanroepen met motion-safe: prefix zodat prefers-reduced-motion
+ * gerespecteerd wordt: <span class="motion-safe:animate-pulse-pin"> */
+@keyframes pulse-pin {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Nieuwe Guidooo tokens — geen inline omdat dit constanten zijn, geen CSS-var-refs */
+@theme {
+  --radius-pill: 9999px;
+  --animate-pulse-pin: pulse-pin 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -46,17 +74,30 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  /* Guidooo brand accent tokens */
+  --color-accent-1: var(--accent-1);
+  --color-accent-1-foreground: var(--accent-1-foreground);
+  --color-accent-2: var(--accent-2);
+  --color-accent-2-foreground: var(--accent-2-foreground);
 }
 
 :root {
-  --background: oklch(1 0 0);
+  /* === Guidooo brand === */
+  --background: #f7f5f2;
+  --primary: #e8512a;
+  --primary-foreground: #ffffff;
+  --accent-1: #f5a623;
+  --accent-1-foreground: #ffffff;
+  --accent-2: #e8404a;
+  --accent-2-foreground: #ffffff;
+  --ring: #e8512a;
+
+  /* === shadcn tokens (behoud voor componentcompatibiliteit) === */
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -66,7 +107,6 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -75,12 +115,12 @@
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #e8512a;
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: #e8512a;
 }
 
 .dark {
@@ -90,8 +130,12 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: #e8512a;
+  --primary-foreground: #ffffff;
+  --accent-1: #f5a623;
+  --accent-1-foreground: #ffffff;
+  --accent-2: #e8404a;
+  --accent-2-foreground: #ffffff;
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -101,7 +145,7 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --ring: #e8512a;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -109,12 +153,12 @@
   --chart-5: oklch(0.269 0 0);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #e8512a;
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: #e8512a;
 }
 
 @layer base {
