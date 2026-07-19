@@ -1,17 +1,20 @@
 import Image from "next/image";
-import { MapPin, Headphones } from "lucide-react";
+import { Headphones } from "lucide-react";
+import { GuidoooWordmark, GuidoooMark } from "@/components/brand/guidooo-logo";
 
 const TOUR_HREF = "/tours/tour-01";
 
 function PhoneMockup() {
   return (
     <div className="relative mx-auto w-full max-w-[300px]">
-      {/* Decorative pulsing pin floating over the phone */}
-      <span className="absolute -left-3 top-10 z-20 flex h-6 w-6 items-center justify-center">
-        <span className="motion-safe:animate-pulse-pin absolute inline-flex h-full w-full rounded-full bg-accent-2 opacity-60" />
-        <span className="relative inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent-2 text-accent-2-foreground shadow-md">
-          <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-        </span>
+      {/* Decorative pulsing brand pin floating over the phone */}
+      <span className="absolute -left-3 top-8 z-20 flex h-7 w-7 items-center justify-center">
+        <span className="motion-safe:animate-pulse-pin absolute bottom-0 inline-flex h-6 w-6 rounded-full bg-brand-orange opacity-50" />
+        <GuidoooMark
+          className="relative h-9 drop-shadow-md"
+          color="var(--color-brand-orange)"
+          holeColor="var(--color-background)"
+        />
       </span>
 
       {/* Phone frame */}
@@ -19,9 +22,11 @@ function PhoneMockup() {
         <div className="overflow-hidden rounded-[2rem] bg-background">
           {/* App top bar */}
           <div className="flex items-center justify-between bg-primary px-4 py-3">
-            <span className="text-xs font-black tracking-tight text-primary-foreground">
-              Guidooo
-            </span>
+            <GuidoooWordmark
+              tone="light"
+              holeColor="var(--color-primary)"
+              className="text-base"
+            />
             <span className="rounded-pill bg-primary-foreground/20 px-2 py-0.5 text-[10px] font-semibold text-primary-foreground">
               Stop 1 / 9
             </span>
