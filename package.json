@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate-content": "tsx scripts/generate-content.ts"
+    "generate-content": "tsx scripts/generate-content.ts",
+    "generate-content-en": "tsx scripts/generate-content-en.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
