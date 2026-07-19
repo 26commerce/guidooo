@@ -1,9 +1,12 @@
 export type Doelgroep = "kinderen" | "jongvolwassenen" | "volwassenen";
 
+export type Taal = "nl" | "en";
+
 export type Tour = {
   id: string;
   stad: string;
   titel: string;
+  title_en: string | null;
   taal: string;
   doelgroep: Doelgroep;
   status: string;
@@ -26,6 +29,10 @@ export type Stop = {
   content_volwassenen: string | null;
   audioscript: string | null;
   audio_url: string | null;
+  content_volwassenen_nl: string | null;
+  content_volwassenen_en: string | null;
+  audio_url_volwassenen_nl: string | null;
+  audio_url_volwassenen_en: string | null;
   taal: string;
 };
 
